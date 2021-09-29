@@ -10,12 +10,27 @@ public class PlayerCombat : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
+    public int attackDamage = 10;
+
+    public float attackRate = 4f;
+    float nextAttackTime = 0f;
+    public int maxHealth = 3;
+    int currentHealth;
+    void Start()
+    {
+        // Start at full health
+        currentHealth = maxHealth;
+    }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if(Time.time >= nextAttackTime)
         {
-            Attack();
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Attack();
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
     }
 
@@ -30,8 +45,19 @@ public class PlayerCombat : MonoBehaviour
         // Damage them
         foreach(Collider2D enemy in hitEnemies)
         {
-            // Do damage
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        // Take damage from current health
+        currentHealth -= damage;
+
+        if(currentHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }        
     }
 
     void OnDrawGizmosSelected() 
