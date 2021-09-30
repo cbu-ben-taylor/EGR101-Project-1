@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
         {
             player.GetComponent<PlayerCombat>().TakeDamage(attackDamage);
             Destroy(this.gameObject);
+            ScoreUI.score++;
         }
     }
 
