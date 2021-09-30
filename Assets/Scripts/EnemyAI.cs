@@ -5,7 +5,7 @@ using Pathfinding;
 
 public class EnemyAI : MonoBehaviour
 {
-   public Transform target;
+   public GameObject target = GameObject.Find("Player");
 
    public float speed = 200f;
    public float nextWaypointDistance = 3f;
@@ -30,7 +30,7 @@ public class EnemyAI : MonoBehaviour
     void UpdatePath()
     {
         if (seeker.IsDone())
-        seeker.StartPath(rb.position, target.position, OnPathComplete);
+        seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
     }
 
     void OnPathComplete(Path p)

@@ -15,7 +15,7 @@ public class PlayerCombat : MonoBehaviour
     public float attackRate = 4f;
     float nextAttackTime = 0f;
     public int maxHealth = 3;
-    int currentHealth;
+    public static int currentHealth;
     void Start()
     {
         // Start at full health

@@ -4,20 +4,41 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public Transform spawnPosition;
+    public Transform spawnPoint;
 
-    public GameObject enemy;
+    public GameObject enemyPrefab;
 
-    public GameObject[] enemies;
+    public float timeBetweenWaves = 10f;
+    private float countdown = 2f;
 
-    void Start()
+    private static int enemyIncreaser = 2;
+    private int enemyCount = 0;
+
+    void Update() 
     {
-        StartCoroutine(SpawnAnEnemy());
+        if (countdown <= 0)
+        {
+            StartCoroutine(SpawnWave());
+            countdown = timeBetweenWaves;
+        }
+
+        countdown -= Time.deltaTime;    
     }
 
-    IEnumerator SpawnAnEnemy()
+    IEnumerator SpawnWave ()
     {
-        Vector2 spawnPos = spawnPosition.transform.position;
-        Instantiate(enemy, spawnPos, transform.rotation);
+        enemyIncreaser++;
+        enemyCount = enemyIncreaser / 3;
+
+        for (int i = 0; i < enemyCount; i++)
+        {
+            SpawnEnemy();
+            yield return new WaitForSeconds(1.5f);
+        }
+    }
+
+    void SpawnEnemy () 
+    {
+        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
     }
 }
