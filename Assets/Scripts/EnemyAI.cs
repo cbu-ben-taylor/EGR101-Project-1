@@ -5,7 +5,7 @@ using Pathfinding;
 
 public class EnemyAI : MonoBehaviour
 {
-   public GameObject target = GameObject.Find("Player");
+   public GameObject target;
 
    public float speed = 200f;
    public float nextWaypointDistance = 3f;
@@ -19,6 +19,9 @@ public class EnemyAI : MonoBehaviour
    Seeker seeker;
    Rigidbody2D rb;
 
+    private void Awake() {
+        target = GameObject.Find("Player");
+    }
     void Start()
     {
         seeker = GetComponent<Seeker>();
@@ -72,11 +75,11 @@ public class EnemyAI : MonoBehaviour
 
         if (force.x >= 0.01f)
         {
-            EnemyGFX.localScale = new Vector3(-4f, 4f, 4f);
+            EnemyGFX.localScale = new Vector3(4f, 4f, 4f);
         } 
         else if (force.x <= -0.01f)
         {
-            EnemyGFX.localScale = new Vector3(4f, 4f, 4f);
+            EnemyGFX.localScale = new Vector3(-4f, 4f, 4f);
         }
     }
 }

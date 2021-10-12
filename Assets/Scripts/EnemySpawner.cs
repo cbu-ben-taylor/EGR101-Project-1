@@ -11,8 +11,14 @@ public class EnemySpawner : MonoBehaviour
     public float timeBetweenWaves = 10f;
     private float countdown = 2f;
 
-    private static int enemyIncreaser = 2;
-    private int enemyCount = 0;
+    private static int enemyIncreaser;
+    private int enemyCount;
+
+    void Start() 
+    {
+        enemyIncreaser = 2;
+        enemyCount = 0;
+    }
 
     void Update() 
     {

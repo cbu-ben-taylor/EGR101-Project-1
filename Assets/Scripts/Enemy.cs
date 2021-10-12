@@ -25,8 +25,8 @@ public class Enemy : MonoBehaviour
         foreach(Collider2D player in hitPlayer)
         {
             player.GetComponent<PlayerCombat>().TakeDamage(attackDamage);
-            Destroy(this.gameObject);
             ScoreUI.score++;
+            Destroy(this.gameObject);
         }
     }
 
@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
     {
         // Take damage from current health
         currentHealth -= damage;
+        ScoreUI.score++;
 
         if(currentHealth <= 0)
         {
