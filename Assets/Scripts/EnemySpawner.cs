@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public Transform spawnPoint;
+    public Transform[] spawnPoint;
 
     public GameObject enemyPrefab;
 
@@ -39,12 +39,12 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < enemyCount; i++)
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1f);
         }
     }
 
     void SpawnEnemy () 
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(enemyPrefab, spawnPoint[Random.Range(0,2)].position, spawnPoint[Random.Range(0,2)].rotation);
     }
 }

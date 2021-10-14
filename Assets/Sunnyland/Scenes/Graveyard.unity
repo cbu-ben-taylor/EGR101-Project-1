@@ -1380,7 +1380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 157641662}
   m_Layer: 0
-  m_Name: SpawnPosition1
+  m_Name: TopLeftSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1456,7 +1456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 710634992}
   m_Layer: 0
-  m_Name: SpawnPosition
+  m_Name: TopRightSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1507,7 +1507,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aff08a813119f34d83c9dfa9419c0ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 710634992}
+  spawnPoint:
+  - {fileID: 710634992}
+  - {fileID: 157641662}
   enemyPrefab: {fileID: 2137944999781391254, guid: c3b2412616088b043b6e44daa7f0412d,
     type: 3}
   timeBetweenWaves: 5
@@ -7887,7 +7889,7 @@ PrefabInstance:
     - target: {fileID: 4668652841541167543, guid: b26c97c2dc0ad444c8d2945d831565dc,
         type: 3}
       propertyPath: attackRange
-      value: 1.1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4668652841541167550, guid: b26c97c2dc0ad444c8d2945d831565dc,
         type: 3}
